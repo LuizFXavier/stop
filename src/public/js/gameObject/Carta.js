@@ -8,8 +8,10 @@ class Carta {
         this.valor = valor;
         this.naipe = naipe;
         this.imagem = imagem;
-        this.virada = true;
+        this.virada = false;
         console.log(this.width,this.height)
+        this.descartada = false
+        this.audio = new AudioGame("./public/js/assets/audio/efeito_carta.mp3",0.24)
     }
     atualizar() {
 
@@ -27,6 +29,7 @@ class Carta {
 
         if (Collision.rectangleCollision({ x: e.clientX, y: e.clientY, width: 2, height: 2 }, this)) {
             console.log("clicado")
+            this.audio.play(0.55)
             //this.virada = !this.virada
             return this
         }
