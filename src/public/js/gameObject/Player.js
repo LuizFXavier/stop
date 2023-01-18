@@ -21,10 +21,6 @@ class Player {
         for (let j = 2; j <= 3; j++) {
             this.hands[j].x = this.x + this.hands[j].width
             this.hands[j].y = this.y + this.hands[j].height * (j - 2)
-            // this.hands[2].x = this.x 
-            // this.hands[2].y = this.y + j * this.hands[j].height
-            // this.hands[3].x = this.x + this.hands[3].width
-            // this.hands[3].y = this.y + j * this.hands[j].height
         }
     }
     comprarMais(pilha) {
@@ -53,6 +49,7 @@ class Player {
         }
     }
     trocar(carta, descarte) {
+        console.log(carta);
         if (this.hands.indexOf(carta) != -1) {
             this.hands[this.hands.indexOf(carta)].virada = false;
             descarte.push(this.hands[this.hands.indexOf(carta)])
@@ -73,7 +70,7 @@ class Player {
     descartar(descarte) {
         this.mao.descartada = true;
         descarte.push(this.mao)
-        descarte.slice(-1)[0].x = canvas.width / 2
+        descarte.slice(-1)[0].x = canvas.width / 2;
         descarte.slice(-1)[0].y = canvas.height / 2 - 200;
         this.mao = null
         this.comprando = false
@@ -100,6 +97,6 @@ class Player {
             this.comprarMais(pilha)
             //carta.virada = !carta.virada
         }
-        this.minhaVez = true
+        //this.minhaVez = true
     }
 }
