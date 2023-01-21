@@ -7,6 +7,7 @@ class Player {
         this.comprando = false;
         this.pontos = 0;
         this.minhaVez = true;
+        this.vendoIncio = true;
         this.comprarInicio(baralho.compraInicial());
         this.somarPontos();
     }
@@ -22,6 +23,7 @@ class Player {
             this.hands[j].x = this.x + this.hands[j].width
             this.hands[j].y = this.y + this.hands[j].height * (j - 2)
         }
+
     }
     comprarMais(pilha) {
         if (this.hands.indexOf(null) != -1) {
@@ -33,7 +35,7 @@ class Player {
         else {
             pilha.slice(-1)[0].x = this.x + pilha[0].width * Math.floor((this.hands.length) / 2)
             pilha.slice(-1)[0].y = this.hands.length % 2 == 0 ? this.y : this.y + pilha[0].height
-            
+
             this.hands.push(pilha.slice(-1)[0])
             pilha.pop()
         }
@@ -57,7 +59,7 @@ class Player {
             this.mao.y = carta.y;
             carta.x = canvas.width / 2
             carta.y = canvas.height / 2 - 200;
-            this.mao.virada = false
+            //this.mao.virada = false
             this.mao.virada = true
             this.hands[this.hands.indexOf(carta)] = this.mao
             this.comprando = false;
@@ -98,5 +100,36 @@ class Player {
             //carta.virada = !carta.virada
         }
         //this.minhaVez = true
+    }
+    mostrarInicio() {
+        setTimeout(() => {
+            this.hands[1].virada = true;
+            this.hands[3].virada = true;
+        },1000)
+        this.hands[1].virada = false;
+        this.hands[3].virada = false;
+        //this.vendoIncio = false
+    }
+    pedirStop(...outros){
+        outros.forEach((jogador)=>{
+            jogador.hands.forEach(carta =>{
+                if(carta){
+                    carta.virada = false;
+                }
+            })
+        })
+        this.hands.forEach(carta =>{
+            if(carta){
+                carta.virada = false;
+            }
+        })
+        if(outros[0].pontos >= this.pontos){
+
+            alert("Você venceu")
+        }
+        else{
+
+            alert("Você perdeu")
+        }
     }
 }

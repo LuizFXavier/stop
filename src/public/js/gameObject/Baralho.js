@@ -24,19 +24,22 @@ class Baralho {
 
                 this.deck.push(new Carta(canvas.width * 0.01, canvas.height * 0.01, (canvas.width * 0.073), canvas.height * 0.2, i, naipe, imagem))
                 sobreposto += 100;
+
             }
         }
+        this.deck[25].valor = 0
+        this.deck[38].valor = 0
         let imagem = new Imagem(989, 108, widthS, heightS, './public/image/baralho.png')
         console.log(this.descarte);
         this.descarte.push(new Carta(canvas.width / 2, canvas.height / 2 - 200, (canvas.width * 0.073), canvas.height * 0.2, 0, this.naipes["copas"], imagem))
         this.descarte[0].virada = false
     }
     embaralhar() {
-        for (let i = this.deck.length - 1; i > 0; i--) {
+        for (let i = this.pilha.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1))
-            let temp = this.deck[i]
-            this.deck[i] = this.deck[j]
-            this.deck[j] = temp
+            let temp = this.pilha[i]
+            this.pilha[i] = this.pilha[j]
+            this.pilha[j] = temp
         }
     }
     compraInicial() {
@@ -44,5 +47,25 @@ class Baralho {
         const comprado = this.pilha.slice(-4);
         this.pilha = this.pilha.slice(0, this.pilha.length - 4)
         return comprado;
+    }
+    voltarPilha() {
+        this.pilha = []
+        for (let i = 1; i < this.descarte - 2; i++) {
+            console.log(pilha);
+            this.pilha.push(0)
+        }
+        for (let index = 0; index < this.pilha.length; index++) {
+            this.pilha[index].x = 0
+        }
+        let temp = [];
+        temp.push(this.descarte[0])
+        temp.push(this.descarte.slice(-1)[0])
+        this.descarte = temp
+
+        //console.log(this.descarte)
+        this.pilha.forEach(carta => {
+            carta.x = 0;
+        })
+        this.embaralhar()
     }
 }
