@@ -40,5 +40,11 @@ class Bote extends Player {
             player1.minhaVez = true;
             console.log("rodando");
     }
+    tamanhoCartasMenor(){
+        this.hands.forEach(carta=>{
+            carta.width /=2;
+            carta.height /=2;
+        })
+    }
 
 }

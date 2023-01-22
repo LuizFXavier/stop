@@ -23,6 +23,8 @@ const baralho = new Baralho();
 const player1 = new Player(canvas.width / 2 - baralho.deck[0].width, canvas.height / 2 + 20, baralho);
 const bot1 = new Bote(player1.x * 1.8, canvas.height / 2 - baralho.deck[0].height, baralho)
 
+
+//bot1.tamanhoCartasMenor()
 player1.mostrarInicio()
 //player1.mostrarInicio()
 botaoStop.addEventListener('click', (e) => {
@@ -92,6 +94,8 @@ function update() {
     if (baralho.pilha.length <= 0){
         baralho.voltarPilha()
     }
+    player1.somarPontos();
+    bot1.somarPontos();
 }
 
 function animate() {

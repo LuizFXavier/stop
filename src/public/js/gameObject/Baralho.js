@@ -49,11 +49,10 @@ class Baralho {
         return comprado;
     }
     voltarPilha() {
-        this.pilha = []
-        for (let i = 1; i < this.descarte - 2; i++) {
-            console.log(pilha);
-            this.pilha.push(0)
-        }
+        this.pilha = this.pilha.concat(this.descarte)
+        this.pilha.shift()
+        this.pilha.pop()
+        
         for (let index = 0; index < this.pilha.length; index++) {
             this.pilha[index].x = 0
         }
@@ -64,7 +63,10 @@ class Baralho {
 
         //console.log(this.descarte)
         this.pilha.forEach(carta => {
-            carta.x = 0;
+            carta.x = canvas.width * 0.01;
+            carta.y = canvas.height * 0.01;
+            carta.virada = true;
+            carta.descartada = false;
         })
         this.embaralhar()
     }

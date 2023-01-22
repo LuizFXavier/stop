@@ -42,6 +42,7 @@ class Player {
     }
     comprar(carta, pilha) {
         if (carta) {
+            console.log("comprou")
             this.mao = carta;
             this.mao.virada = false;
             carta.x = this.x - carta.width * 2;
@@ -64,7 +65,7 @@ class Player {
             this.hands[this.hands.indexOf(carta)] = this.mao
             this.comprando = false;
             this.mao = null;
-            this.somarPontos();
+            
             this.minhaVez = false
         }
 
