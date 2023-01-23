@@ -58,6 +58,10 @@ class Player {
             descarte.push(this.hands[this.hands.indexOf(carta)])
             this.mao.x = carta.x;
             this.mao.y = carta.y;
+
+            carta.width = descarte[0].width
+            carta.height = descarte[0].height
+
             carta.x = canvas.width / 2
             carta.y = canvas.height / 2 - 200;
             //this.mao.virada = false
@@ -65,8 +69,9 @@ class Player {
             this.hands[this.hands.indexOf(carta)] = this.mao
             this.comprando = false;
             this.mao = null;
-            
+
             this.minhaVez = false
+
         }
 
     }
@@ -93,6 +98,8 @@ class Player {
             carta.x = descarte[0].x
             carta.y = descarte[0].y
             carta.virada = false
+            carta.width = descarte[0].width
+            carta.height = descarte[0].height
             descarte.push(carta)
             this.hands[this.hands.indexOf(carta)] = null
         }
@@ -106,29 +113,29 @@ class Player {
         setTimeout(() => {
             this.hands[1].virada = true;
             this.hands[3].virada = true;
-        },1000)
+        }, 1000)
         this.hands[1].virada = false;
         this.hands[3].virada = false;
         //this.vendoIncio = false
     }
-    pedirStop(...outros){
-        outros.forEach((jogador)=>{
-            jogador.hands.forEach(carta =>{
-                if(carta){
+    pedirStop(...outros) {
+        outros.forEach((jogador) => {
+            jogador.hands.forEach(carta => {
+                if (carta) {
                     carta.virada = false;
                 }
             })
         })
-        this.hands.forEach(carta =>{
-            if(carta){
+        this.hands.forEach(carta => {
+            if (carta) {
                 carta.virada = false;
             }
         })
-        if(outros[0].pontos >= this.pontos){
+        if (outros[0].pontos >= this.pontos) {
 
             alert("Você venceu")
         }
-        else{
+        else {
 
             alert("Você perdeu")
         }

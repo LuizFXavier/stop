@@ -8,7 +8,7 @@ class Carta {
         this.valor = valor;
         this.naipe = naipe;
         this.imagem = imagem;
-        this.virada = true;
+        this.virada = false;
         console.log(this.width,this.height)
         this.descartada = false
         this.audio = new AudioGame("./public/js/assets/audio/efeito_carta.mp3",0.24)
